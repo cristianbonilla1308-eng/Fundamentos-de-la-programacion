@@ -1,38 +1,20 @@
 """
 ================================================================
-   SISTEMA DE VENTAS - TACOS LA CHILCA
-   Proyecto integrador final - Curso de Python
-================================================================
-Este programa simula un sistema sencillo de ventas para una
-taqueria llamada "Tacos La Chilca". Permite:
-    - Identificar al usuario que esta usando el sistema.
-    - Registrar la fecha de la operacion.
-    - Consultar el menu de productos.
-    - Realizar una venta (elegir productos y cantidades).
-    - Calcular subtotales y el total de la venta.
-    - Guardar la informacion de las ventas en archivos .txt
-    - Leer, crear y modificar archivos .txt
-    - Manejar errores comunes sin que el programa se cierre.
-    - Detectar inactividad del usuario en el menu principal.
-
-El programa esta pensado para un estudiante que esta aprendiendo
-Python, por lo que se evitan clases, POO, bases de datos,
-frameworks y librerias externas. Solo se usan herramientas
-basicas: variables, listas, listas de listas, tuplas, funciones,
-condicionales, ciclos, manejo de archivos y manejo de excepciones.
+   SISTEMA DE VENTAS Y INVENTARIO - TACOS LA CHILCA
+   Proyecto final 
 ================================================================
 """
 
 import os      # Para verificar si un archivo ya existe
 import time    # Para la pantalla de carga y el control de inactividad
-import pdb     # Para hacer debugging del programa (Requerimiento 9)
+import pdb     # Para hacer debugging del programa 
 
 NOMBRE_NEGOCIO = "Tacos La Chilca"
 
-# NOTA PARA PRUEBAS: si se quiere probar esta funcion rapido en
+
 TIEMPO_INACTIVIDAD = 600
 
-# (Se agrega "inventario.txt" para el Requerimiento 11: inventario)
+
 ARCHIVOS_INICIALES = ["menu.txt", "ventas.txt", "clientes.txt", "pedidos.txt", "inventario.txt"]
 
 ARCHIVO_INVENTARIO = "inventario.txt"
@@ -113,7 +95,7 @@ def pantalla_carga():
     for i in range(5):
         barra = barra + "#"
         print("[" + barra + "]")
-        time.sleep(1)  # Pausa de 1 segundo, en total 5 segundos maximo
+        time.sleep(1)  
     print("Sistema listo.\n")
 
 def solicitar_fecha():
@@ -215,7 +197,7 @@ def control_inactividad(tiempo_ultima_accion):
 
     if segundos_transcurridos >= TIEMPO_INACTIVIDAD:
         for segundo in range(0, segundos_transcurridos, 60):
-            pass  # Aqui se "recorre" el tiempo transcurrido, minuto a minuto
+            pass  
 
         print("\nHan pasado " + str(segundos_transcurridos) + " segundos sin interaccion.")
         respuesta = input('¿Deseas continuar en el menu? Escribe "si" o "no": ')
@@ -284,7 +266,7 @@ def buscar_en_inventario(inventario, nombre_producto):
     return -1
 
 def realizar_venta(nombre, Fecha, inventario):
-    productos_comprados = []  # Lista donde guardamos cada producto comprado
+    productos_comprados = []  # Lista donde se guarda cada producto comprado
     total = 0
     continuar_comprando = True
     hubo_venta_exitosa = False  # Para saber si hay que guardar el inventario al final
@@ -419,32 +401,32 @@ def main():
 
     while programa_activo:
 
-        # Requerimiento 1: identificacion de usuario
+        #  identificacion de usuario
         nombre = input("Ingresa tu nombre o nickname: ")
 
-        # Requerimiento 6: captura de fecha en tupla (dia, mes, anio)
+        #  captura de fecha en tupla (dia, mes, anio)
         Fecha = solicitar_fecha()
 
         verificar_archivos()
 
-        # Requerimiento 3: pantalla de carga
+        #  pantalla de carga
         pantalla_carga()
 
-        # Requerimiento 2: bienvenida personalizada usando el nombre
+        #  bienvenida personalizada usando el nombre
         print("Bienvenido " + nombre + " a " + NOMBRE_NEGOCIO)
         print(f"Hoy es {Fecha[0]}/{Fecha[1]}/{Fecha[2]}. ¡Que tengas un excelente dia!")
 
-        # Cargamos el inventario desde inventario.txt (Requerimiento 11)
+        # Cargamos el inventario desde inventario.txt 
         inventario = cargar_inventario()
 
         tiempo_ultima_accion = time.time()
 
         seguir_en_menu = True
 
-        # Requerimiento 4: menu principal controlado con while,
+        #  menu principal controlado con while,
         while seguir_en_menu:
 
-            # Requerimiento 5: revisamos si el usuario estuvo inactivo
+            #  revisamos si el usuario estuvo inactivo
             continuar = control_inactividad(tiempo_ultima_accion)
             if not continuar:
                 seguir_en_menu = False
@@ -471,7 +453,7 @@ def main():
                 agregar_archivo()
 
             elif opcion == "6":
-                # Requerimiento 11: consultar inventario en cualquier momento
+                #  consultar inventario en cualquier momento
                 mostrar_inventario(inventario)
 
             elif opcion == "7":
@@ -485,7 +467,7 @@ def main():
     print("Programa finalizado.")
 
 if __name__ == "__main__":
-    # NOTA DE DEBUGGING (Requerimiento 9):
+    # NOTA DE DEBUGGING 
 # DEBUGGING REALIZADO: se uso PDB para revisar cantidad, precio y subtotal.
 # Se detecto que cantidad era texto; se corrigio convirtiendola con int() y try-except.
     main()
