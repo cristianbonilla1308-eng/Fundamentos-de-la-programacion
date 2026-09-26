@@ -1,0 +1,9 @@
+Taco al pastor|46
+Taco de bistec|40
+Taco de suadero|45
+Taco de carnitas|40
+Taco de pollo|35
+Quesadilla|20
+Gringa|14
+Refresco|30
+Agua fresca|24

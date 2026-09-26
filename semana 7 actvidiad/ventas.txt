@@ -1,0 +1,20 @@
+REGISTRO DE VENTAS - TACOS LA CHILCA
+--------------------------------
+Venta de Tacos La Chilca
+Usuario: cristian bonilla
+Fecha: 13/09/2026
+Producto: Taco al pastor
+Cantidad: 4
+Precio: $18
+Subtotal: $72
+Producto: Agua fresca
+Cantidad: 1
+Precio: $20
+Subtotal: $20
+Producto: Gringa
+Cantidad: 1
+Precio: $45
+Subtotal: $45
+Total: $137
+--------------------------------
+
